@@ -7,14 +7,14 @@ const TeamScore = (props) => {
     const game = props.game
     const teams = game.teams
 
-    const dom = []
+    const teamScore = []
 
     Object.keys(teams)
         .map(teamName => getTeamScoreDisplayElement(teamName, teams[teamName], game.maxOvers))
         .map(element => (<div className="teamScore">{element}</div>))
-        .forEach(element => dom.push(element))
+        .forEach(element => teamScore.push(element))
 
-    return dom
+    return teamScore
 }
 
 function getTeamScoreDisplayElement(teamName, team, maxOvers) {
