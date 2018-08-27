@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './teamscore.css'
 
 const TeamScore = (props) => {
 
@@ -9,7 +10,9 @@ const TeamScore = (props) => {
     const dom = []
 
     Object.keys(teams)
-        .map(teamName => dom.push(getTeamScoreDisplayElement(teamName, teams[teamName], game.maxOvers)))
+        .map(teamName => getTeamScoreDisplayElement(teamName, teams[teamName], game.maxOvers))
+        .map(element => (<div className="teamScore">{element}</div>))
+        .forEach(element => dom.push(element))
 
     return dom
 }
@@ -17,7 +20,7 @@ const TeamScore = (props) => {
 function getTeamScoreDisplayElement(teamName, team, maxOvers) {
 
     if (team.batting) {
-        return (<h3>{teamName}&nbsp;&nbsp;&nbsp;&nbsp;{team.runs}/{team.wickets} in {team.oversPlayed}/{maxOvers}</h3>)
+        return (<h3>{teamName}<span className="score">{team.runs}/{team.wickets} in {team.oversPlayed}/{maxOvers}</span></h3>)
     } else {
         return (<p>{teamName} scored {team.runs}/{team.wickets} in {team.oversPlayed} overs</p>)
     }
