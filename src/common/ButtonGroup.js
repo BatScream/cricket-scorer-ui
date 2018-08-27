@@ -6,7 +6,7 @@ class ButtonGroup extends React.Component {
     return this.props.input.map((element, index) => (
       <Button
         key={index}
-        value={element}
+        element={element}
         handleClick={this.props.handleClick}
       />
     ));

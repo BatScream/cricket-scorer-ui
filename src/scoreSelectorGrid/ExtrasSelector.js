@@ -5,7 +5,13 @@ import { SET_CURRENT_SCORE, SET_EXTRAS } from "../game/actions";
 
 class ExtranSelectorGrid extends React.Component {
   render() {
-    const input = ["W", "N", "B", "Lb"];
+    const input = [
+      { value: 0, label: "W" },
+      { value: 1, label: "N" },
+      { value: 1, label: "B" },
+      { value: 1, label: "Lb" },
+      { value: 1, label: "Wd" }
+    ];
     return (
       <span>
         Extras{" "}
