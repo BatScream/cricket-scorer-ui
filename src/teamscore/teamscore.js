@@ -27,9 +27,7 @@ function getTeamScoreDisplayElement(teamName, team, maxOvers) {
 }
 
 const mapStateToTeamScoreProps = (state) => {
-
     return {
-        //TODO - check why do we need to use state.game.game when using root reducer. When using game reducer only, state.game works.
         game: state.game
     }
 }
