@@ -1,5 +1,5 @@
 const initialState = {
-    game: {
+  
         totalOvers: 20,
         teams: {
             "Team 1": {
@@ -17,7 +17,7 @@ const initialState = {
 
             }
         }
-    }
+    
 }
 
 const reducer = (state = initialState, action) => {

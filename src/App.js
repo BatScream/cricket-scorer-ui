@@ -7,9 +7,7 @@ const store = configureStore();
 
 const App = () =>
   <Provider store={store} >
-    <div>
       <ConnectedTeamScore />
-    </div>
   </Provider>;
 
 
