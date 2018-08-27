@@ -1,6 +1,6 @@
 const initialState = {
   
-        totalOvers: 20,
+        maxOvers: 20,
         teams: {
             "Team 1": {
                 runs: 120,

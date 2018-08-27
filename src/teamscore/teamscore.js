@@ -6,20 +6,21 @@ const TeamScore = (props) => {
     const game = props.game
     const teams = game.teams
 
-    const html = []
+    const dom = []
 
-    for (const teamName in teams) {
+    Object.keys(teams)
+        .map(teamName => dom.push(getTeamScoreDisplayElement(teamName, teams[teamName], game.maxOvers)))
 
-        const team = teams[teamName]
+    return dom
+}
 
-        if (team.batting) {
-            html.push(<h3>{teamName}&nbsp;&nbsp;&nbsp;&nbsp;{team.runs}/{team.wickets} in {team.oversPlayed}/{game.totalOvers}</h3>)
-        } else {
-            html.push(<p>{teamName} scored {team.runs}/{team.wickets} in {team.oversPlayed} overs</p>)
-        }
+function getTeamScoreDisplayElement(teamName, team, maxOvers) {
+
+    if (team.batting) {
+        return (<h3>{teamName}&nbsp;&nbsp;&nbsp;&nbsp;{team.runs}/{team.wickets} in {team.oversPlayed}/{maxOvers}</h3>)
+    } else {
+        return (<p>{teamName} scored {team.runs}/{team.wickets} in {team.oversPlayed} overs</p>)
     }
-
-    return html
 }
 
 const mapStateToTeamScoreProps = (state) => {
