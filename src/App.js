@@ -1,15 +1,14 @@
-import React  from 'react';
-import { Provider } from 'react-redux';
-import configureStore from './store';
+import React from "react";
+import { Provider } from "react-redux";
+import configureStore from "./store";
+import ScoreSelectorGrid from "./scoreSelectorGrid/RunSelector";
 
 const store = configureStore();
 
-const App = () =>
-  <Provider store={store} >
-    <div>
-      <h1>Cricker Scorer API</h1>
-    </div>
-  </Provider>;
-
+const App = () => (
+  <Provider store={store}>
+    <ScoreSelectorGrid />
+  </Provider>
+);
 
 export default App;
