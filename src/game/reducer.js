@@ -21,11 +21,12 @@ const initialState = {
         }
     },
 
-    currentOver: [
-        { runs: 3, extras: 'B', wicket: 'NWk' },
-        { runs: 5, extras: 'N', wicket: 'Wk' },
-        { runs: 6, extras: 'LB', wicket: 'NWK' }
-    ],
+    currentOver: []
+    // tempOver : [
+    //     { runs: 3, extras: 'B', wicket: 'NWk' },
+    //     { runs: 5, extras: 'N', wicket: 'Wk' },
+    //     { runs: 6, extras: 'LB', wicket: 'NWK' }
+    // ],
 }
 
 const reducer = (state = initialState, action) => {
