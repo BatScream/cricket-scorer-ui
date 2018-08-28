@@ -14,7 +14,7 @@ const Overs = (props) => {
 
             <div>
                 update over details
-        <input type="button" value="Next" onClick={(event) => props.updateOver({ "runs": 6, "extras": 'W', "wicket": 'NWK' })} />
+        <input type="button" value="Next Ball" onClick={(event) => props.updateOver({ "runs": 6, "extras": 'W', "wicket": 'NWK' })} />
             </div>
 
         </div>
