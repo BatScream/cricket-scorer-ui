@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import { connect } from 'react-redux'
 import { relative } from 'upath';
@@ -19,60 +20,47 @@ const Overs = (props) => {
 
         </div>
     )
-};
 
 
-const printCurrentOvers = (props) => {
-    console.log(props);
+const printCurrentOvers = props => {
+  console.log(props);
 
-    let stringToDisplay = '';
-    props.game.currentOver.map((ball) => {
+  let stringToDisplay = "";
+  props.game.currentOver.map(ball => {
+    stringToDisplay += ball.runs + "_";
+    stringToDisplay += ball.extras;
+    assignWicketDetails(ball.wicket);
+    console.log("test");
+    return <label>{stringToDisplay}</label>;
+  });
 
-        stringToDisplay += ball.runs + "_";
-        stringToDisplay += ball.extras
-        assignWicketDetails(ball.wicket)
-        console.log("test");
-        return (
-            <label>{stringToDisplay}</label>
-        )
+  const mapStateCurrentOverDisplay = state => {
+    console.log(state);
+    return state;
+  };
+  function assignWicketDetails(wicket) {
+    console.log("inside codition" + wicket);
 
-    });
-
-    const mapStateCurrentOverDisplay = (state) => {
-        console.log(state)
-        return state
-    };
-    function assignWicketDetails(wicket) {
-        console.log("inside codition" + wicket)
-
-        if (wicket == 'NWK') {
-            stringToDisplay += " "
-        } else {
-            stringToDisplay += "_" + wicket + " "
-
-        }
-
+    if (wicket === "NWK") {
+      stringToDisplay += " ";
+    } else {
+      stringToDisplay += "_" + wicket + " ";
     }
-    console.log(stringToDisplay);
-    return (
-        <label>{stringToDisplay}</label>
-    )
-
-
+  }
+  console.log(stringToDisplay);
+  return <label>{stringToDisplay}</label>;
 };
 
-
-const mapStateCurrentOverDisplay = (state) => {
-    console.log(state)
-    return state
+const mapStateCurrentOverDisplay = state => {
+  console.log(state);
+  return state;
 };
 
-
-const MapDispatchForOverUpdate = (dispatch) => (
-    {
-        updateOver: (text) => dispatch(updateOverWithBall(text))
-    }
-);
-const ConnectedCurrentOverDisplay = connect(mapStateCurrentOverDisplay, MapDispatchForOverUpdate)(Overs);
+const MapDispatchForOverUpdate = dispatch => ({
+  updateOver: text => dispatch(updateOverWithBall(text))
+});
+const ConnectedCurrentOverDisplay = connect(
+  mapStateCurrentOverDisplay,
+  MapDispatchForOverUpdate
+)(Overs);
 export default ConnectedCurrentOverDisplay;
-

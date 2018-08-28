@@ -1,27 +1,26 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import configureStore from './store';
-import ConnectedTeamScore from './teamscore/teamscore.js'
+import React from "react";
+import { Provider } from "react-redux";
+import configureStore from "./store";
+import ConnectedTeamScore from "./teamscore/teamscore.js";
 import ScoreSelectorGrid from "./scoreSelectorGrid/RunSelector";
 import ExtranSelectorGrid from "./scoreSelectorGrid/ExtrasSelector";
-
-import SegmentedButton from './Components/SegmentedButton'
-import ConnectedCurrentOverDisplay from './store/viewController.js';
-
+import { ConnectedPlayerSelector } from "./playerSelectorGrid/playerSelector";
+import ConnectedCurrentOverDisplay from "./store/viewController.js";
 
 const store = configureStore();
-const App = () =>
-  <Provider store={store} >
+const App = () => (
+  <Provider store={store}>
     <div>
       <ConnectedTeamScore />
       <ConnectedCurrentOverDisplay />
-      <SegmentedButton />
+      <ConnectedPlayerSelector />
       <ScoreSelectorGrid />
       <div>
-      <ExtranSelectorGrid />
+        <ExtranSelectorGrid />
       </div>
     </div>
-  </Provider>;
+  </Provider>
+);
 
 //TODO - do we need so many div containers
 
