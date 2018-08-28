@@ -11,7 +11,7 @@ const TeamScore = (props) => {
 
     Object.keys(teams)
         .map(teamName => getTeamScoreDisplayElement(teamName, teams[teamName], game.maxOvers))
-        .map(element => (<div className="teamScore">{element}</div>))
+        .map((element, index) => (<div key={index} className="teamScore">{element}</div>))
         .forEach(element => teamScore.push(element))
 
     return teamScore
