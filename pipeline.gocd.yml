@@ -9,7 +9,7 @@ pipelines:
     group: team1
     materials:
       ui:
-        git: "https://github.com/BatScream/cricket-scorer-ui.git"
+        git: "git@github.com:BatScream/cricket-scorer-ui.git"
     stages:
       - test:
           jobs:
