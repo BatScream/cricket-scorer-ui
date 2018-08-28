@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React from 'react'
 import { connect } from 'react-redux'
 import { relative } from 'upath';
@@ -21,7 +21,7 @@ const Overs = (props) => {
         </div>
     )
 
-
+}
 const printCurrentOvers = props => {
   console.log(props);
 
