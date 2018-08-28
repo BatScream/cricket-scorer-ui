@@ -1,6 +1,6 @@
 import { createMockStore, mockAxios } from "../testHelpers/mockHelpers";
 import { fetchGameDetails, GAME_DETAILS_FETCHED } from './actions';
-
+import {reducer} from "./reducer"
 const mock = mockAxios();
 let store;
 const apiData = {
@@ -29,3 +29,17 @@ describe("game/actions", () => {
     });
   });
 })
+
+test ('should return object', () => {
+  const result = {
+    type : 'UPDATE_CURRENT_OVER_FOR_BALL',
+    updateOver :{runs :3,extras: 'B',wicket:'NWk'}
+  }
+  
+  const gameinitialState = {
+    currentOver : [{runs :3,extras: 'B',wicket:'NWk'}]
+  };
+    expect(reducer({currentOver:[]},result).currentOver).toEqual([{runs :3,extras: 'B',wicket:'NWk'}]);
+   // expect(reducer({currentOver:[]},result)).toEqual(gameinitialState);
+  
+  });
