@@ -28,6 +28,4 @@ describe("game/actions", () => {
       });
     });
   });
-
-
 })
