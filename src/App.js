@@ -6,22 +6,21 @@ import ScoreSelectorGrid from "./scoreSelectorGrid/RunSelector";
 import ExtranSelectorGrid from "./scoreSelectorGrid/ExtrasSelector";
 
 import SegmentedButton from './Components/SegmentedButton'
+import ConnectedCurrentOverDisplay from './store/viewController.js';
+
 
 const store = configureStore();
-
 const App = () =>
   <Provider store={store} >
     <div>
-    <h1>Cricker Scorer API</h1>
-     <SegmentedButton/>
-    <div>
       <ConnectedTeamScore />
+      <ConnectedCurrentOverDisplay />
+      <SegmentedButton />
       <ScoreSelectorGrid />
-      </div>
-      <div>
-        <ExtranSelectorGrid />
-        </div>
+      <ExtranSelectorGrid />
     </div>
   </Provider>;
+
+//TODO - do we need so many div containers
 
 export default App;
