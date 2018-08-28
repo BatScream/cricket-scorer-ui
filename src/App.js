@@ -17,7 +17,9 @@ const App = () =>
       <ConnectedCurrentOverDisplay />
       <SegmentedButton />
       <ScoreSelectorGrid />
+      <div>
       <ExtranSelectorGrid />
+      </div>
     </div>
   </Provider>;
 
