@@ -3,13 +3,13 @@ environments:
   ci:
     pipelines:
       - "team1UI"
-      
+
 pipelines:
   "team1UI":
     group: team1
     materials:
       ui:
-        git: "git@github.com:Sethuraman/bootcamp-just-cinemas-ui.git"
+        git: "https://github.com/BatScream/cricket-scorer-ui.git"
     stages:
       - test:
           jobs:
@@ -31,10 +31,10 @@ pipelines:
                     REACT_APP_API_URL="http://localhost:9090" yarn run build              
 
       - deploy:
-           jobs:
+          jobs:
             deploy:
               resources:
                 - node-and-java
               tasks:
                 - script: |
-                    sh ./buildAndDeploy/deploy.sh team1-bootcamp-march2018
+                    sh ./buildAndDeploy/deploy.sh team1-bootcamp-august2018
