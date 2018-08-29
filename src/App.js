@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import configureStore from "./store";
 import ConnectedTeamScore from "./teamscore/teamscore.js";
-import ScoreSelectorGrid from "./scoreSelectorGrid/RunSelector";
+import ConnectedScoreSelectorGrid from "./scoreSelectorGrid/RunSelector";
 import ExtranSelectorGrid from "./scoreSelectorGrid/ExtrasSelector";
 import { ConnectedPlayerSelector } from "./playerSelectorGrid/playerSelector";
 import ConnectedCurrentOverDisplay from "./store/viewController.js";
@@ -15,7 +15,7 @@ const App = () => (
       <ConnectedTeamScore />
       <ConnectedCurrentOverDisplay />
       <ConnectedPlayerSelector />
-      <ScoreSelectorGrid />
+      <ConnectedScoreSelectorGrid />
       <div>
         <ExtranSelectorGrid />
       </div>

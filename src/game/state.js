@@ -16,13 +16,6 @@ export const gameState = {
       players: {
         1: {
           name: "Sachin",
-          battingStats: {
-            runs: 0,
-            balls: 0,
-            fours: 0,
-            sixes: 0,
-            strikeRate: 0
-          },
           bowlingStats: {
             overs: 0,
             maiden: 0,
@@ -32,13 +25,6 @@ export const gameState = {
         },
         2: {
           name: "Sehwag",
-          battingStats: {
-            runs: 0,
-            balls: 0,
-            fours: 0,
-            sixes: 0,
-            strikeRate: 0
-          },
           bowlingStats: {
             overs: 0,
             maiden: 0,
@@ -56,6 +42,22 @@ export const gameState = {
     }
   },
   currentOver: [{ id: 1, runs: 3, extras: "B", wicket: "NWK" }],
-  currentSelectedScore: { label: 0, value: 0 },
-  currentSelectedExtra: { label: 0, value: 0 }
+  currentSelectedScore: { },
+  currentSelectedExtra: { label: 0, value: 0 },
+  battingStats:{
+    1:{
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0
+    },
+    2:{
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0
+    }
+  }
 };
