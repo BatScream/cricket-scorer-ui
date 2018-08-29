@@ -5,7 +5,7 @@ class ButtonGroup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedValue: props.selectedValue
+      selectedValue: -1
     };
     this.onSelection = this.onSelection.bind(this);
   }
@@ -18,7 +18,7 @@ class ButtonGroup extends React.Component {
     });
   }
   render() {
-    var selectedValue = this.props.selectedValue;
+    var selectedValue = this.state.selectedValue;
     return this.props.input.map((element, index) => {
       var isSelected = selectedValue === element.label;
       return (
