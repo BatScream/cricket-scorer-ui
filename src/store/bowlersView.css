@@ -1,0 +1,13 @@
+.BowlerDetails{
+    width: 50%;
+}
+
+.bowlerName{
+    width: 80%;
+    float: left;
+}
+
+.bowler{
+    width: 10%;
+    float: left;
+}

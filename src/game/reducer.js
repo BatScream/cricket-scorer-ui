@@ -1,11 +1,21 @@
 import {
   SET_CURRENT_SCORE,
   SET_EXTRAS,
-  ACTION_UPDATE_CURRENT_OVER_FOR_BALL
+  ACTION_UPDATE_CURRENT_OVER_FOR_BALL,
+  ACTION_UPDATE_EXTRA_FOR_CURRENT_BOWLER
 } from "./actions";
 
-const initialState = {
+ const initialState = {
   maxOvers: 20,
+
+  currentBallsRun : 0,
+  currentBallsExtra : 'B',
+  currentBallsWicket : 'NWK',
+
+  currentBowler: {
+      team: "team2",
+      player: 3
+  },
   currentBatsmen: {
     team:
       "team1" /*instead of using team id, we can check for which team is batting currently*/,
@@ -29,7 +39,62 @@ const initialState = {
         runs: 150,
         wickets: 5,
         oversPlayed: 20,
-        batting: false
+        batting: false,
+        players: {
+          1: { 
+            name: "Brett Lee" ,
+            battingStats: {
+              runs : 0,
+              balls:0,
+              fours:0,
+              sixes:0,
+              strikeRate:0
+            },
+            bowlingStats:{
+              overs:0,
+              maiden:0,
+              run:0,
+              wicket:0,
+              extras :0
+            }
+          },
+          2: { 
+            name: "Brett Lee" ,
+            battingStats: {
+              runs : 0,
+              balls:0,
+              fours:0,
+              sixes:0,
+              strikeRate:0
+            },
+            bowlingStats:{
+              overs:0,
+              maiden:0,
+              run:0,
+              wicket:0,
+              extras :0
+
+            }
+          },
+          3: { 
+            name: "Virat Kohli" ,
+            battingStats: {
+              runs : 0,
+              balls:0,
+              fours:0,
+              sixes:0,
+              strikeRate:0
+            },
+            bowlingStats:{
+              overs:0,
+              maiden:0,
+              run:0,
+              wicket:0,
+              extras :0
+            }
+          }
+        }
+
       }
     },
     currentOver: []
@@ -45,9 +110,21 @@ const reducer = (state = initialState, action) => {
     case ACTION_UPDATE_CURRENT_OVER_FOR_BALL:
       state.currentOver.push(action.updateOver);
       return { ...state, currentOver: state.currentOver };
+    case ACTION_UPDATE_EXTRA_FOR_CURRENT_BOWLER :
+        let bowlerTeam = state.currentBowler.team;
+        let bowlerid= state.currentBowler.player;
+        let currentExtras = state.teams[bowlerTeam].players[bowlerid].bowlingStats.extras;
+        if(state.currentBallsExtra !== 'B'){
+            if(state.currentBallsExtra !== null)
+            {
+            currentExtras +=  1;
+            state.teams[bowlerTeam].players[bowlerid].bowlingStats.extras=currentExtras;
+          }
+        }
+      return { ...state, state: state.teams[bowlerTeam].players[bowlerid].bowlingStats.extras };
     default:
       return state;
   }
 };
 
-export default reducer;
+export {reducer,initialState};
