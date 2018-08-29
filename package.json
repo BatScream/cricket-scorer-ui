@@ -26,5 +26,8 @@
     "lint": "eslint src",
     "test_with_coverage": "CI=true react-scripts test --env=jsdom --coverage",
     "ci": "yarn run lint && yarn run test_with_coverage"
-    }
+  },
+  "devDependencies": {
+    "jest-each": "^23.5.0"
+  }
 }

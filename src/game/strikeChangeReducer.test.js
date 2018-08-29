@@ -1,32 +1,21 @@
 import { batsmanStrikeChangeReducer } from "./strikeChangeReducer";
+import each from 'jest-each';
 
-test("ShouldNotRotateStrikeWhenTheCurrentRunsScoredIs_0", () => {
-  expect(strikeChangeForRuns(0)).toBe(false);
-});
-
-test("ShouldRotateStrikeWhenTheCurrentRunsScoredIs_1", () => {
-  expect(strikeChangeForRuns(1)).toBe(true);
-});
-
-test("ShouldNotRotateStrikeWhenTheCurrentRunsScoredIs_2", () => {
-  expect(strikeChangeForRuns(2)).toBe(false);
-});
-
-test("ShouldRotateStrikeWhenTheCurrentRunsScoredIs_3", () => {
-  expect(strikeChangeForRuns(3)).toBe(true);
-});
-
-test("ShouldNotRotateStrikeWhenTheCurrentRunsScoredIs_4", () => {
-  expect(strikeChangeForRuns(4)).toBe(false);
-});
-
-test("ShouldRotateStrikeWhenTheCurrentRunsScoredIs_5", () => {
-  expect(strikeChangeForRuns(5)).toBe(true);
-});
-
-test("ShouldNotRotateStrikeWhenTheCurrentRunsScoredIs_6", () => {
-  expect(strikeChangeForRuns(6)).toBe(false);
-});
+each([
+  [0, false],
+  [1, true],
+  [2, false],
+  [3, true],
+  [4, false],
+  [5, true],
+  [6, false]
+])
+.test(
+  'change batsman at strikers end based on runs scored', 
+  (runs, shouldStrikeChange) => {
+    expect(strikeChangeForRuns(runs)).toBe(shouldStrikeChange);
+  }
+);
 
 const strikeChangeForRuns = runs => {
   return !!batsmanStrikeChangeReducer(getObjectForStrikerXAndScoreY(runs))
