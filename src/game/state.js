@@ -1,12 +1,10 @@
-import reducer from "./reducer";
-
-const expectedState = {
+export const gameState = {
   maxOvers: 20,
   currentBatsmen: {
     team:
       "team1" /*instead of using team id, we can check for which team is batting currently*/,
     players: [1, 2],
-    onStrike: 1
+    onStrike: 0
   },
   teams: {
     team1: {
@@ -52,43 +50,13 @@ const expectedState = {
     },
     team2: {
       name: "Team 2",
-      runs: 150,
-      wickets: 5,
-      oversPlayed: 20,
+      runs: 0,
+      wickets: 0,
+      oversPlayed: 0,
       batting: false
     }
   },
-  currentOver: [],
+  currentOver: [{ id: 1, runs: 3, extras: "B", wicket: "NWK" }],
   currentSelectedScore: {},
   currentSelectedExtra: {}
 };
-
-/*
- 
-
-*/
-
-test("should return initial start when reducer is called for the first time", () => {
-  expect(expectedState).toEqual(reducer(undefined, { type: "@@INIT" }));
-});
-
-test("testing reducer for intial state and empty action", () => {
-  expect(reducer(undefined, {})).toEqual(expectedState);
-});
-
-test("testing reducer for action SET_CURRENT_SCORE", () => {
-  const SetCurrentScoreAction = {
-    type: "SET_CURRENT_SCORE",
-    value: 4
-  };
-  const mockState = { currentSelectedScore: 4 };
-  expect(reducer({}, SetCurrentScoreAction)).toEqual(mockState);
-});
-test("testing reducer for action SET_CURRENT_SCORE", () => {
-  const SetCurrentScoreAction = {
-    type: "SET_EXTRAS",
-    value: 4
-  };
-  const mockState = { currentSelectedExtra: 4 };
-  expect(reducer({}, SetCurrentScoreAction)).toEqual(mockState);
-});

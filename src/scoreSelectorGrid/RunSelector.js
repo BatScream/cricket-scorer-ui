@@ -24,7 +24,7 @@ export default connect(
   dispatch => ({
     handleClick: data => {
       dispatch({
-        type: 'SET_CURRENT_SCORE',
+        type: SET_CURRENT_SCORE,
         value: data
       });
     }

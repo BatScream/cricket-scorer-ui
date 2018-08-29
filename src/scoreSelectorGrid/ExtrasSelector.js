@@ -9,7 +9,7 @@ class ExtranSelectorGrid extends React.Component {
       { value: 1, label: "W" },
       { value: 1, label: "N" },
       { value: 1, label: "B" },
-      { value: 1, label: "Lb" },
+      { value: 1, label: "Lb" }
     ];
     return (
       <div>
@@ -25,7 +25,7 @@ export default connect(
   dispatch => ({
     handleClick: text => {
       dispatch({
-        type: 'SET_EXTRAS',
+        type: SET_EXTRAS,
         value: text
       });
     }
