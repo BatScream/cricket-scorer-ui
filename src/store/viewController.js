@@ -12,16 +12,16 @@ const Overs = (props) => {
     return (
         <div className="overDetails">
             <label>This Over :</label> <span className="bowlingDetails">{printCurrentOvers(props)}</span>
-
             <div>
                 update over details
-            <input type="button" value="Next Ball" onClick={(event) => props.updateOver({ "runs": 6, "extras": 'W', "wicket": 'NWK' })} />
+            <input type="button" value="Next Ball" onClick={(event) => props.updateOver({ "runs":  props.game.currentSelectedScore.value, "extras":  props.game.currentSelectedExtra.label, "wicket": 'NWK' })} />
             </div>
 
         </div>
     )
+};
 
-}
+
 const printCurrentOvers = props => {
   console.log(props);
 
@@ -63,4 +63,5 @@ const ConnectedCurrentOverDisplay = connect(
   mapStateCurrentOverDisplay,
   MapDispatchForOverUpdate
 )(Overs);
+
 export default ConnectedCurrentOverDisplay;

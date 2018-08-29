@@ -6,17 +6,16 @@ import { SET_EXTRAS } from "../game/actions";
 class ExtranSelectorGrid extends React.Component {
   render() {
     const input = [
-      { value: 0, label: "W" },
+      { value: 1, label: "W" },
       { value: 1, label: "N" },
       { value: 1, label: "B" },
       { value: 1, label: "Lb" },
-      { value: 1, label: "Wd" }
     ];
     return (
-      <span>
+      <div>
         Extras{" "}
         <ButtonGroup input={input} handleClick={this.props.handleClick} />
-      </span>
+      </div>
     );
   }
 }
@@ -26,7 +25,7 @@ export default connect(
   dispatch => ({
     handleClick: text => {
       dispatch({
-        type: SET_EXTRAS,
+        type: 'SET_EXTRAS',
         value: text
       });
     }

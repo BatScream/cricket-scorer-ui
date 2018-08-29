@@ -6,9 +6,11 @@ class Button extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      isSelected:false
+      isSelected:false,
+      onSelection:props.onSelection,
     }
     this.getClassForButtonState = this.getClassForButtonState.bind(this)
+    this.buttonClick = this.buttonClick.bind(this)
   }
 
   getClassForButtonState(selected){
@@ -19,18 +21,20 @@ class Button extends React.Component {
 
     }
   }
+
+  buttonClick(){
+    this.props.onSelection(this.props.element.label)
+    this.props.handleClick({label:this.props.element.label,value:this.props.element.value});
+    console.log('button click')
+    console.log(this.props.element.value)
+  }
   render() {
     return (
       <button
-        className={this.getClassForButtonState(this.state.isSelected)}
+        className={this.getClassForButtonState(this.props.isSelected)}
         id={this.props.element.label}
         onClick={() => {
-          this.setState(function (state, props) {
-            return {
-              isSelected: !state.isSelected
-            }
-           })
-          this.props.handleClick(this.props.element.value);
+          this.buttonClick()
         }}
       >
         {this.props.element.label}
