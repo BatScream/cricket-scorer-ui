@@ -1,4 +1,5 @@
 export const batsmanStrikeChangeReducer = state => {
+  
   const batsmanOnStrike = state.currentBatsmen.onStrike;
   if (batsmanOnStrike !== 0 && batsmanOnStrike !== 1) {
     console.log(
@@ -7,16 +8,12 @@ export const batsmanStrikeChangeReducer = state => {
     );
     return state;
   }
-  console.log("Batsman currently on strike:" + batsmanOnStrike);
-  const os =
-    (state.currentSelectedScore.value + state.currentSelectedExtra.value) %
-    2 ===
-    0
-      ? batsmanOnStrike
-      : +!batsmanOnStrike;
-  console.log("Batsman on strike after run:" + os);
+
+  const strikeChange = (state.currentSelectedScore.value + state.currentSelectedExtra.value) % 2 !== 0
+  const nextOnStrike = strikeChange ? +!batsmanOnStrike : batsmanOnStrike;
+  
   return {
     ...state,
-    currentBatsmen: { ...state.currentBatsmen, onStrike: os }
+    currentBatsmen: { ...state.currentBatsmen, onStrike: nextOnStrike }
   };
 };
