@@ -22,10 +22,10 @@ class ScoreSelectorGrid extends React.Component {
 export default connect(
   null,
   dispatch => ({
-    handleClick: text => {
+    handleClick: data => {
       dispatch({
-        type: SET_CURRENT_SCORE,
-        value: text
+        type: 'SET_CURRENT_SCORE',
+        value: data
       });
     }
   })

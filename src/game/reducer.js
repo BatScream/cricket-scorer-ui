@@ -7,8 +7,6 @@ import {
 
 const initialState = {
   maxOvers: 20,
-  currentSelectedScore: 0,
-  currentSelectedExtra: 0,
   currentBatsmen: {
     team:
       "team1" /*instead of using team id, we can check for which team is batting currently*/,
@@ -18,13 +16,43 @@ const initialState = {
   teams: {
     team1: {
       name: "Team 1",
-      runs: 0,
-      wickets: 0,
-      oversPlayed: 0,
-      batting: true /*This can be moved to a higher level*/,
+      runs: 120,
+      wickets: 7,
+      oversPlayed: 15.4,
+      batting: true,
       players: {
-        1: { name: "Sachin" },
-        2: { name: "Sehwag" }
+        1: {
+          name: "Sachin",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0
+          }
+        },
+        2: {
+          name: "Shewag",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0
+          }
+        }
       }
     },
     team2: {
@@ -35,11 +63,9 @@ const initialState = {
       batting: false
     }
   },
-  currentOver: [
-    { id: 1, runs: 3, extras: "B", wicket: "NWk" },
-    { id: 1, runs: 5, extras: "N", wicket: "Wk" },
-    { id: 1, runs: 6, extras: "LB", wicket: "NWK" }
-  ]
+  currentOver: [{ id: 1, runs: 3, extras: "B", wicket: "NWK" }],
+  currentSelectedScore: {},
+  currentSelectedExtra: {}
 };
 
 const batsmanStrikeChangeReducer = state => {
@@ -48,7 +74,7 @@ const batsmanStrikeChangeReducer = state => {
     state.currentSelectedScore % 2 === 0
       ? state.currentBatsmen.onStrike
       : +!state.currentBatsmen.onStrike;
-  console.log("Batsman on strike after run:" + state.currentBatsmen.onStrike);
+  console.log("Batsman on strike after run:" + os);
   return {
     ...state,
     currentBatsmen: { ...state.currentBatsmen, onStrike: os }
