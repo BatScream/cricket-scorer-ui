@@ -39,7 +39,7 @@ export const gameState = {
           }
         },
         2: {
-          name: "Shewag",
+          name: "Sehwag",
           battingStats: {
             runs: 0,
             balls: 0,
