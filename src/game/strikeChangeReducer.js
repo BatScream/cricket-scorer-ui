@@ -9,7 +9,9 @@ export const batsmanStrikeChangeReducer = state => {
   }
   console.log("Batsman currently on strike:" + batsmanOnStrike);
   const os =
-    state.currentSelectedScore.value % 2 === 0
+    (state.currentSelectedScore.value + state.currentSelectedExtra.value) %
+    2 ===
+    0
       ? batsmanOnStrike
       : +!batsmanOnStrike;
   console.log("Batsman on strike after run:" + os);

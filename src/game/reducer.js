@@ -9,6 +9,7 @@ import { batsmanStrikeChangeReducer } from "./strikeChangeReducer";
 import { currentOverReducer } from "./currentOverReducer";
 import { currentScoreReducer } from "./currentScoreReducer";
 import { extrasReducer } from "./extrasReducer";
+import { updateTeamScoreReducer } from "./updateTeamScoreReducer";
 
 const reducer = (state = gameState, action) => {
   switch (action.type) {
@@ -19,7 +20,8 @@ const reducer = (state = gameState, action) => {
     case ACTION_UPDATE_CURRENT_OVER_FOR_BALL:
       return currentOverReducer(state, action);
     case NEXT_BALL:
-      return batsmanStrikeChangeReducer(state);
+      const st = updateTeamScoreReducer(state);
+      return batsmanStrikeChangeReducer(st);
 
     default:
       return state;

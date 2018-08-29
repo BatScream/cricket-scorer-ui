@@ -38,5 +38,6 @@ const getObjectForStrikerXAndScoreY = runs => ({
     players: [1, 2],
     onStrike: 0
   },
-  currentSelectedScore: { label: runs, value: runs }
+  currentSelectedScore: { label: runs, value: runs },
+  currentSelectedExtra: { label: 0, value: 0 }
 });
