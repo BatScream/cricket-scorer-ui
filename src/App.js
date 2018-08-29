@@ -6,6 +6,7 @@ import ScoreSelectorGrid from "./scoreSelectorGrid/RunSelector";
 import ExtranSelectorGrid from "./scoreSelectorGrid/ExtrasSelector";
 import { ConnectedPlayerSelector } from "./playerSelectorGrid/playerSelector";
 import ConnectedCurrentOverDisplay from "./store/viewController.js";
+import Next from "./next/next";
 
 const store = configureStore();
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
       <div>
         <ExtranSelectorGrid />
       </div>
+      <Next />
     </div>
   </Provider>
 );

@@ -1,23 +1,26 @@
 import {
   SET_CURRENT_SCORE,
   SET_EXTRAS,
-  ACTION_UPDATE_CURRENT_OVER_FOR_BALL
+  ACTION_UPDATE_CURRENT_OVER_FOR_BALL,
+  NEXT_BALL
 } from "./actions";
 
 const initialState = {
   maxOvers: 20,
+  currentSelectedScore: 0,
+  currentSelectedExtra: 0,
   currentBatsmen: {
     team:
       "team1" /*instead of using team id, we can check for which team is batting currently*/,
     players: [1, 2],
-    onStrike: 1
+    onStrike: 0
   },
   teams: {
     team1: {
       name: "Team 1",
-      runs: 120,
-      wickets: 7,
-      oversPlayed: 15.4,
+      runs: 0,
+      wickets: 0,
+      oversPlayed: 0,
       batting: true /*This can be moved to a higher level*/,
       players: {
         1: { name: "Sachin" },
@@ -26,29 +29,57 @@ const initialState = {
     },
     team2: {
       name: "Team 2",
-      runs: 150,
-      wickets: 5,
-      oversPlayed: 20,
+      runs: 0,
+      wickets: 0,
+      oversPlayed: 0,
       batting: false
     }
   },
   currentOver: [
-    { runs: 3, extras: "B", wicket: "NWk" },
-    { runs: 5, extras: "N", wicket: "Wk" },
-    { runs: 6, extras: "LB", wicket: "NWK" }
+    { id: 1, runs: 3, extras: "B", wicket: "NWk" },
+    { id: 1, runs: 5, extras: "N", wicket: "Wk" },
+    { id: 1, runs: 6, extras: "LB", wicket: "NWK" }
   ]
+};
+
+const batsmanStrikeChangeReducer = state => {
+  console.log("Batsman currently on strike:" + state.currentBatsmen.onStrike);
+  const os =
+    state.currentSelectedScore % 2 === 0
+      ? state.currentBatsmen.onStrike
+      : +!state.currentBatsmen.onStrike;
+  console.log("Batsman on strike after run:" + state.currentBatsmen.onStrike);
+  return {
+    ...state,
+    currentBatsmen: { ...state.currentBatsmen, onStrike: os }
+  };
+};
+
+const currentScoreReducer = (state, action) => {
+  return { ...state, currentSelectedScore: action.value };
+};
+
+const extrasReducer = (state, action) => {
+  return { ...state, currentSelectedExtra: action.value };
+};
+
+const currentOverReducer = (state, action) => {
+  const newState = Object.assign({}, state);
+  newState.currentOver.push(action.updateOver);
+  return newState;
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_SCORE:
-      return { ...state, currentSelectedScore: action.value };
+      return currentScoreReducer(state, action);
     case SET_EXTRAS:
-      //TODO this need to be modified for the state
-      return { ...state, currentSelectedExtra: action.value };
+      return extrasReducer(state, action);
     case ACTION_UPDATE_CURRENT_OVER_FOR_BALL:
-      state.currentOver.push(action.updateOver);
-      return { ...state, currentOver: state.currentOver };
+      return currentOverReducer(state, action);
+    case NEXT_BALL:
+      return batsmanStrikeChangeReducer(state);
+
     default:
       return state;
   }

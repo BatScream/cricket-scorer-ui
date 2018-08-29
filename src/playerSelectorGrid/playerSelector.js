@@ -13,7 +13,10 @@ const PlayerSelector = props => {
       <div className="segmented">
         {playerIds.map((id, index) => {
           return (
-            <label key={index} className={idOnStrike === id ? "checked" : ""}>
+            <label
+              key={index}
+              className={idOnStrike === index ? "checked" : ""}
+            >
               <input type="radio" name="segmented" />
               {team.players[id].name}
             </label>
