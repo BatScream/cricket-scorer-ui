@@ -5,33 +5,10 @@ import {
   NEXT_BALL
 } from "./actions";
 import { gameState } from "./state";
-
-const batsmanStrikeChangeReducer = state => {
-  console.log("Batsman currently on strike:" + state.currentBatsmen.onStrike);
-  const os =
-    state.currentSelectedScore.value % 2 === 0
-      ? state.currentBatsmen.onStrike
-      : +!state.currentBatsmen.onStrike;
-  console.log("Batsman on strike after run:" + os);
-  return {
-    ...state,
-    currentBatsmen: { ...state.currentBatsmen, onStrike: os }
-  };
-};
-
-const currentScoreReducer = (state, action) => {
-  return { ...state, currentSelectedScore: action.value };
-};
-
-const extrasReducer = (state, action) => {
-  return { ...state, currentSelectedExtra: action.value };
-};
-
-const currentOverReducer = (state, action) => {
-  const newState = Object.assign({}, state);
-  newState.currentOver.push(action.updateOver);
-  return newState;
-};
+import { batsmanStrikeChangeReducer } from "./strikeChangeReducer";
+import { currentOverReducer } from "./currentOverReducer";
+import { currentScoreReducer } from "./currentScoreReducer";
+import { extrasReducer } from "./extrasReducer";
 
 const reducer = (state = gameState, action) => {
   switch (action.type) {
