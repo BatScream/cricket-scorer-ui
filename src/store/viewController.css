@@ -6,3 +6,17 @@
     width: 60%;
     float: right;
 }
+
+.overDetails.BowlerDetails{
+    width: 50%;
+}
+
+.overDetails.bowlerName{
+    width: 80%;
+    float: left;
+}
+
+.overDetails.bowler{
+    width: 10%;
+    float: left;
+}

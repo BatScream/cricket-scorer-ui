@@ -2,7 +2,8 @@ import {
   SET_CURRENT_SCORE,
   SET_EXTRAS,
   ACTION_UPDATE_CURRENT_OVER_FOR_BALL,
-  NEXT_BALL
+  NEXT_BALL,
+  ACTION_UPDATE_EXTRA_FOR_CURRENT_BOWLER
 } from "./actions";
 import { gameState } from "./state";
 import { batsmanStrikeChangeReducer } from "./strikeChangeReducer";
@@ -22,10 +23,20 @@ const reducer = (state = gameState, action) => {
     case NEXT_BALL:
       const st = updateTeamScoreReducer(state);
       return batsmanStrikeChangeReducer(st);
-
+    case ACTION_UPDATE_EXTRA_FOR_CURRENT_BOWLER :
+        let bowlerTeam = state.currentBowler.team;
+        let bowlerid= state.currentBowler.player;
+        let currentExtras = state.teams[bowlerTeam].players[bowlerid].bowlingStats.extras;
+        if(state.currentBallsExtra !== 'B'){
+            if(state.currentBallsExtra !== null)
+            {
+            currentExtras +=  1;
+            state.teams[bowlerTeam].players[bowlerid].bowlingStats.extras=currentExtras;
+          }
+        }
+      return { ...state, state: state.teams[bowlerTeam].players[bowlerid].bowlingStats.extras };
     default:
       return state;
   }
 };
-
 export default reducer;

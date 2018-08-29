@@ -5,7 +5,7 @@ import ConnectedTeamScore from "./teamscore/teamscore.js";
 import ScoreSelectorGrid from "./scoreSelectorGrid/RunSelector";
 import ExtranSelectorGrid from "./scoreSelectorGrid/ExtrasSelector";
 import { ConnectedPlayerSelector } from "./playerSelectorGrid/playerSelector";
-import ConnectedCurrentOverDisplay from "./store/viewController.js";
+import {ConnectedCurrentOverDisplay}from "./store/viewController.js";
 import Next from "./next/next";
 
 const store = configureStore();

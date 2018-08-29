@@ -1,9 +1,13 @@
 import reducer from "./reducer";
+// import {reducer ,initialState } from "./reducer";
 import { gameState } from "./state";
+// import  gameState } from "./state";
+
 
 test("should return initial start when reducer is called for the first time", () => {
   expect(gameState).toEqual(reducer(undefined, { type: "@@INIT" }));
 });
+
 
 test("testing reducer for intial state and empty action", () => {
   expect(reducer(undefined, {})).toEqual(gameState);
@@ -25,3 +29,8 @@ test("testing reducer for action SET_CURRENT_SCORE", () => {
   const mockState = { currentSelectedExtra: 4 };
   expect(reducer({}, SetCurrentScoreAction)).toEqual(mockState);
 });
+
+test('should return initial start when reducer is called for the first time', () => {
+
+    expect(gameState).toEqual(reducer(undefined, {type:'@@INIT'}));
+})
