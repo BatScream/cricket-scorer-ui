@@ -1,36 +1,50 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import './teamscore.css'
+import React from "react";
+import { connect } from "react-redux";
+import "./teamscore.css";
 
-const TeamScore = (props) => {
+const TeamScore = props => {
+  const game = props.game;
+  const teams = game.teams;
 
-    const game = props.game
-    const teams = game.teams
+  const teamScore = [];
 
-    const teamScore = []
+  Object.keys(teams)
+    .map(teamKey => getTeamScoreDisplayElement(teams[teamKey], game.maxOvers))
+    .map((element, index) => (
+      <div key={index} className="teamScore">
+        {element}
+      </div>
+    ))
+    .forEach(element => teamScore.push(element));
 
-    Object.keys(teams)
-        .map(teamKey => getTeamScoreDisplayElement(teams[teamKey], game.maxOvers))
-        .map((element, index) => (<div key={index} className="teamScore">{element}</div>))
-        .forEach(element => teamScore.push(element))
-
-    return teamScore
-}
+  return teamScore;
+};
 
 function getTeamScoreDisplayElement(team, maxOvers) {
-
-    if (team.batting) {
-        return (<h3>{team.name}<span className="score">{team.runs}/{team.wickets} in {team.oversPlayed}/{maxOvers}</span></h3>)
-    } else {
-        return (<p>{team.name} scored {team.runs}/{team.wickets} in {team.oversPlayed} overs</p>)
-    }
+  const ov = String(team.oversPlayed).substring(0, 3);
+  if (team.batting) {
+    return (
+      <h3>
+        {team.name}
+        <span className="score">
+          {team.runs}/{team.wickets} in {ov}/{maxOvers}
+        </span>
+      </h3>
+    );
+  } else {
+    return (
+      <p>
+        {team.name} scored {team.runs}/{team.wickets} in {ov} overs
+      </p>
+    );
+  }
 }
 
-const mapStateToTeamScoreProps = (state) => {
-    return {
-        game: state.game
-    }
-}
+const mapStateToTeamScoreProps = state => {
+  return {
+    game: state.game
+  };
+};
 
 const ConnectedTeamScore = connect(mapStateToTeamScoreProps)(TeamScore);
-export default ConnectedTeamScore
+export default ConnectedTeamScore;

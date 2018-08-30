@@ -6,5 +6,5 @@ export const isEndOfOver = currentOver => {
   return numberOfLegitimateBalls === 6;
 };
 
-const isLegitimateBall = ball =>
+export const isLegitimateBall = ball =>
   !ball.extras || ball.extras === "B" || ball.extras === "Lb";

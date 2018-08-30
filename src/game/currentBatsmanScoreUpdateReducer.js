@@ -14,6 +14,8 @@ const updateBatsmanStateWithCurrentScore = state => {
     case 4:
       fours = fours + 1;
       break;
+    default:
+      break;
   }
   const runs = currentPlayerBattingStats.runs + currentRunScored;
   currentPlayerBattingStats.sixes = sixes;
@@ -23,15 +25,4 @@ const updateBatsmanStateWithCurrentScore = state => {
   return copiedState;
 };
 
-const resetCurrentScoreAndExtras = state => {
-  let copiedState = Object.assign({}, state);
-  copiedState.currentSelectedScore = {};
-  copiedState.currentSelectedExtra = {
-    label: null,
-    value: 0
-  };
-  copiedState.isOut = false;
-  return copiedState;
-};
-
-export { updateBatsmanStateWithCurrentScore, resetCurrentScoreAndExtras };
+export { updateBatsmanStateWithCurrentScore };

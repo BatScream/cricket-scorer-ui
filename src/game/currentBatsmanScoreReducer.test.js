@@ -1,7 +1,5 @@
-import {
-  updateBatsmanStateWithCurrentScore,
-  resetCurrentScoreAndExtras
-} from "./currentBatsmanScoreUpdateReducer";
+import { updateBatsmanStateWithCurrentScore } from "./currentBatsmanScoreUpdateReducer";
+import { resetCurrentScoreAndExtras } from "../helpers/stateLifeCycleHelpers";
 import { gameState } from "./state";
 
 test("should increase the current batsman satistics by 1 run", () => {

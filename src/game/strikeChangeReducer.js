@@ -1,4 +1,4 @@
-import { isEndOfOver } from "../helpers/overhelpers";
+import { isEndOfOver } from "../helpers/overHelpers";
 
 export const batsmanStrikeChangeReducer = state => {
   const batsmanOnStrike = state.currentBatsmen.onStrike;

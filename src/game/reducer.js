@@ -5,11 +5,10 @@ import { currentOverReducer } from "./currentOverReducer";
 import { currentScoreReducer } from "./currentScoreReducer";
 import { extrasReducer } from "./extrasReducer";
 import { updateTeamScoreReducer } from "./updateTeamScoreReducer";
-import {
-  updateBatsmanStateWithCurrentScore,
-  resetCurrentScoreAndExtras
-} from "./currentBatsmanScoreUpdateReducer";
+import { updateBatsmanStateWithCurrentScore } from "./currentBatsmanScoreUpdateReducer";
 import { updateExtraForBowlerReducer } from "./updateExtraForBowlerReducer";
+import { resetCurrentScoreAndExtras } from "../helpers/stateLifeCycleHelpers";
+import { updateTeamOversPlayed } from "./updateTeamOversPlayed";
 
 const reducer = (state = gameState, action) => {
   switch (action.type) {
@@ -30,6 +29,7 @@ const nextActionReducer = state => {
   copiedState = updateBatsmanStateWithCurrentScore(copiedState);
   copiedState = batsmanStrikeChangeReducer(copiedState);
   copiedState = updateTeamScoreReducer(copiedState);
+  copiedState = updateTeamOversPlayed(copiedState);
   copiedState = resetStateAfterNextAction(copiedState);
   return copiedState;
 };
