@@ -1,6 +1,7 @@
 import { createMockStore, mockAxios } from "../testHelpers/mockHelpers";
 import { fetchGameDetails, GAME_DETAILS_FETCHED } from './actions';
 import reducer from "./reducer"
+
 import each from 'jest-each'
 
 const mock = mockAxios();
@@ -70,41 +71,59 @@ test('should return updated current over ', () => {
 test('should return updated extras given by the bowler ', () => {
 
   const initialState = {
-    currentBallsExtra : 'W',
     currentBowler: {
-        team: "team2",
-        player: 3
-    },
+      team: 'team2',
+      player: 3
+  },
+  currentBatsmen: {
+    team:
+      "team1" /*instead of using team id, we can check for which team is batting currently*/,
+    players: [1, 2],
+    onStrike: 0
+  },
     teams: {
+      team1: {
+        name: "Team 1",
+        runs: 10,
+        },
       team2: {
-          players: {
-            3: { 
-              name: "Virat Kohli" ,
-              bowlingStats:{
-                extras : 0
-              }
+        name: "Team 2",
+        runs: 150,
+        wickets: 5,
+        oversPlayed: 20,
+        batting: false,
+        players: {
+          3: { 
+            bowlingStats:{
+              extras :0
             }
           }
         }
       }
-  }
+      },
+    currentSelectedScore: { label: 0, value: 0 },
+    currentSelectedExtra: { label: 'W', value: 0 },
+    currentOver: []
+  
+  };
 
   const action = {
-    type: 'ACTION_UPDATE_EXTRA_FOR_CURRENT_BOWLER',
+    type: 'ACTION_UPDATE_EXTRA_FOR_CURRENT_BOWLER'
   }
   const bowlerID = initialState.currentBowler.player;
   const bowlerTeam= initialState.currentBowler.team;
+
   expect(reducer(initialState,action).teams[bowlerTeam].players[bowlerID].bowlingStats.extras).toBe(1);
 
 })
 
 each([
   ['W', 0, 1],
-  ['W', 1, 2],
-  ['B', 0, 0],
-  ['N', 1, 2],
-  ['Lb', 1, 2],
-  [null, 0, 0],
+   ['W', 1, 2],
+   ['B', 0, 0],
+   ['N', 1, 2],
+  ['Lb', 2, 2],
+  [null, 0, 0]
 
 ])
 .test(
@@ -113,23 +132,37 @@ each([
 
 
     const initialState = {
-      currentBallsExtra : currentBallsExtra,
+      currentSelectedExtra: { label: currentBallsExtra, value: 0 },
       currentBowler: {
           team: "team2",
           player: 3
       },
+      currentBatsmen: {
+        team:
+          "team1" /*instead of using team id, we can check for which team is batting currently*/,
+        players: [1, 2],
+        onStrike: 0
+      },
       teams: {
+        team1: {
+          name: "Team 1",
+          runs: 10,
+          },
         team2: {
-            players: {
-              3: { 
-                name: "Virat Kohli" ,
-                bowlingStats:{
-                  extras : currentExtras
-                }
+          name: "Team 2",
+          runs: 150,
+          wickets: 5,
+          oversPlayed: 20,
+          batting: false,
+          players: {
+            3: { 
+              bowlingStats:{
+                extras :currentExtras
               }
             }
           }
         }
+        },
     }
   
     const action = {
@@ -140,4 +173,3 @@ each([
     expect(reducer(initialState,action).teams[bowlerTeam].players[bowlerID].bowlingStats.extras).toBe(expectedUpdatedExtras);
   }
 )
-

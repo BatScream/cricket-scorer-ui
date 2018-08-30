@@ -1,7 +1,6 @@
 export const gameState = {
   maxOvers: 20,
   currentBallsRun : 0,
-  currentBallsExtra : 'B',
   currentBallsWicket : 'NWK',
   currentBowler: {
     team: "team2",
@@ -17,7 +16,7 @@ export const gameState = {
   teams: {
     team1: {
       name: "Team 1",
-      runs: 0,
+      runs: 10,
       wickets: 0,
       oversPlayed: 0,
       players: {
@@ -136,7 +135,7 @@ export const gameState = {
     }
     },
   currentSelectedScore: { label: 0, value: 0 },
-  currentSelectedExtra: { label: 0, value: 0 },
+  currentSelectedExtra: { label: null, value: 0 },
   // currentOver: [{ id: 1, runs: 3, extras: "B", wicket: "NWK" }],
   currentOver: []
 

@@ -6,10 +6,10 @@ import { SET_EXTRAS } from "../game/actions";
 class ExtranSelectorGrid extends React.Component {
   render() {
     const input = [
-      { value: 1, label: "W" },
-      { value: 1, label: "N" },
-      { value: 1, label: "B" },
-      { value: 1, label: "Lb" }
+      { value: 1, label: 'W'},
+      { value: 1, label: 'N' },
+      { value: 0, label: 'B' },
+      { value: 0, label: 'Lb' }
     ];
     return (
       <div>
