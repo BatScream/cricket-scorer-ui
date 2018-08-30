@@ -25,8 +25,12 @@ const Overs = (props) => {
 const printCurrentOvers = (props) => {
   let stringToDisplay = "";
   props.game.currentOver.map(ball => {
-    stringToDisplay += ball.runs + "_";
-    stringToDisplay += ball.extras;
+    if(ball.runs !== 0){
+      stringToDisplay += ball.runs;
+    }
+    if(ball.extras !== null){
+      stringToDisplay += ball.extras;
+    }
     assignWicketDetails(ball.wicket);
     console.log("test");
     return <label>{stringToDisplay}</label>;

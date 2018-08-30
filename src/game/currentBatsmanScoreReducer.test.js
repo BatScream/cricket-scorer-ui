@@ -53,6 +53,7 @@ test("should reset current selected score to empty",()=>{
     expectedGameState.battingStats[1].runs = 4
     expectedGameState.battingStats[1].fours = 1
     expectedGameState.battingStats[1].balls = 1
+    expectedGameState.currentSelectedScore = {};
     let copiedGameState =  getDeepCopyForObject(gameState)
     copiedGameState.currentSelectedScore = {value:4,label:4}
     copiedGameState = updateBatsmanStateWithCurrentScore(copiedGameState)

@@ -19,8 +19,8 @@ const reducer = (state = gameState, action) => {
       return currentScoreReducer(state, action);
     case SET_EXTRAS:
       return extrasReducer(state, action);
-      case NEXT_BALL:
-       return nextActionReducer(state)
+    case NEXT_BALL:
+      return nextActionReducer(state);
     default:
       return state;
   }

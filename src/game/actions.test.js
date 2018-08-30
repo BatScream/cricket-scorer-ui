@@ -1,7 +1,6 @@
 import { createMockStore, mockAxios } from "../testHelpers/mockHelpers";
 import { fetchGameDetails, GAME_DETAILS_FETCHED } from './actions';
 
-
 const mock = mockAxios();
 let store;
 const apiData = {
