@@ -1,7 +1,6 @@
 export const batsmanStrikeChangeReducer = state => {
-  
   const batsmanOnStrike = state.currentBatsmen.onStrike;
-  
+
   if (batsmanOnStrike !== 0 && batsmanOnStrike !== 1) {
     console.log(
       "Silently Failing and not updating the state because the striker index is out of range",
@@ -10,8 +9,8 @@ export const batsmanStrikeChangeReducer = state => {
     return state;
   }
 
-  const isOddRunsScored = (state.currentSelectedScore.value + state.currentSelectedExtra.value) % 2 !== 0
-  
+  const isOddRunsScored = (state.currentSelectedScore.value || 0) % 2 !== 0;
+
   let isStrikeChanged = isOddRunsScored;
 
   if (isEndOfOver(state.currentOver)) {
@@ -26,14 +25,13 @@ export const batsmanStrikeChangeReducer = state => {
   };
 };
 
-export const isEndOfOver = (currentOver) => {
+export const isEndOfOver = currentOver => {
+  const numberOfLegitimateBalls = currentOver.filter(ball =>
+    isLegitimateBall(ball)
+  ).length;
 
-  const numberOfLegitimateBalls =
-      currentOver
-          .filter(ball => isLegitimateBall(ball))
-          .length;
-  
   return numberOfLegitimateBalls === 6;
-}
+};
 
-const isLegitimateBall = (ball) => !ball.extras || ball.extras === 'B' || ball.extras === 'Lb'
+const isLegitimateBall = ball =>
+  !ball.extras || ball.extras === "B" || ball.extras === "Lb";

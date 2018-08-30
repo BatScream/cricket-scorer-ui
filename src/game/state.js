@@ -1,14 +1,15 @@
 export const gameState = {
   maxOvers: 20,
   currentBallsRun: 0,
-  currentBallsWicket: 'NWK',
+  currentBallsWicket: "NWK",
   currentBowler: {
     team: "team2",
     player: 3
   },
   currentBattingTeam: "team1",
   currentBatsmen: {
-    team: "team1" /*instead of using team id, we can check for which team is batting currently*/ ,
+    team:
+      "team1" /*instead of using team id, we can check for which team is batting currently*/,
     players: [1, 2],
     onStrike: 0
   },
@@ -111,7 +112,6 @@ export const gameState = {
             run: 0,
             wicket: 0,
             extras: 0
-
           }
         },
         3: {
@@ -150,11 +150,10 @@ export const gameState = {
       strikeRate: 0
     }
   },
-  currentSelectedScore: {
-  },
+  currentSelectedScore: {},
   currentSelectedExtra: {
     label: null,
     value: 0
   },
   currentOver: []
-}
+};
