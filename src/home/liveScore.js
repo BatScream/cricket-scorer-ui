@@ -6,6 +6,7 @@ import { ConnectedPlayerSelector } from "../playerSelectorGrid/playerSelector";
 import { ConnectedCurrentOverDisplay } from "../store/viewController.js";
 import Next from "../next/next";
 import { Container, Row, Col } from "reactstrap";
+import Out from "../out/out";
 
 class LiveScore extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class LiveScore extends React.Component {
     return (
       <Container style={divStyle}>
         <Row>
-          <Col xs="3">
+          <Col>
             <ConnectedTeamScore />
           </Col>
         </Row>
@@ -45,6 +46,11 @@ class LiveScore extends React.Component {
         </Row>
         <Row>
           <Col>
+            <Out />
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={{ size: 12, offset: 4 }}>
             <Next />
           </Col>
         </Row>

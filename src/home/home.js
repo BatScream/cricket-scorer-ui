@@ -7,27 +7,30 @@ import { Container, Row, Col } from "reactstrap";
 
 class Home extends React.Component {
   render() {
-
     const divStyle = {
       margin: "auto",
       border: "5px solid black",
       backgroundColor: "lightyellow",
       width: "500px",
-      "text-align":"center"
+      textAlign: "center"
     };
 
     return (
       <HashRouter>
         <div>
-        <Container style={divStyle}>
-        <Row>
-          <Col>
-          <NavLink to="/"><button class="button">Live Score</button></NavLink>
-          </Col>
-          <Col>
-          <NavLink to="/scoreboard"><button class="button">Score Board</button></NavLink>
-          </Col>
-        </Row>
+          <Container style={divStyle}>
+            <Row>
+              <Col>
+                <NavLink to="/">
+                  <button className="button">Live Score</button>
+                </NavLink>
+              </Col>
+              <Col>
+                <NavLink to="/scoreboard">
+                  <button className="button">Score Board</button>
+                </NavLink>
+              </Col>
+            </Row>
           </Container>
           <div className="content">
             <Route exact path="/" component={LiveScore} />

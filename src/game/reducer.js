@@ -1,4 +1,9 @@
-import { SET_CURRENT_SCORE, SET_EXTRAS, NEXT_BALL } from "./actions";
+import {
+  SET_CURRENT_SCORE,
+  SET_EXTRAS,
+  NEXT_BALL,
+  FALL_OF_WICKET
+} from "./actions";
 import { gameState } from "./state";
 import { batsmanStrikeChangeReducer } from "./strikeChangeReducer";
 import { currentOverReducer } from "./currentOverReducer";
@@ -9,6 +14,8 @@ import { updateBatsmanStateWithCurrentScore } from "./currentBatsmanScoreUpdateR
 import { updateExtraForBowlerReducer } from "./updateExtraForBowlerReducer";
 import { resetCurrentScoreAndExtras } from "../helpers/stateLifeCycleHelpers";
 import { updateTeamOversPlayed } from "./updateTeamOversPlayed";
+import { handleFallOfWicket } from "./handleFallOfWicket";
+import { changeBatsmanIfWicketHasFallen } from "./handleFallOfWicket";
 
 const reducer = (state = gameState, action) => {
   switch (action.type) {
@@ -16,13 +23,15 @@ const reducer = (state = gameState, action) => {
       return currentScoreReducer(state, action);
     case SET_EXTRAS:
       return extrasReducer(state, action);
+    case FALL_OF_WICKET:
+      return handleFallOfWicket(state);
     case NEXT_BALL:
-      return nextActionReducer(state);
+      return nextActionReducer(state, action.payload);
     default:
       return state;
   }
 };
-const nextActionReducer = state => {
+const nextActionReducer = (state, payload) => {
   let copiedState = Object.assign({}, state);
   copiedState = currentOverReducer(copiedState);
   copiedState = updateExtraForBowlerReducer(copiedState);
@@ -30,6 +39,7 @@ const nextActionReducer = state => {
   copiedState = batsmanStrikeChangeReducer(copiedState);
   copiedState = updateTeamScoreReducer(copiedState);
   copiedState = updateTeamOversPlayed(copiedState);
+  copiedState = changeBatsmanIfWicketHasFallen(copiedState, payload);
   copiedState = resetStateAfterNextAction(copiedState);
   return copiedState;
 };

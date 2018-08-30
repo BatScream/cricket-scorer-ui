@@ -10,18 +10,16 @@ const PlayerSelector = props => {
 
   return (
     <div className="container">
-    <div className = "currentOver"> This Ball :</div>
+      <div className="currentOver"> This Ball :</div>
       <div className="segmented">
-      
         {playerIds.map((id, index) => {
           return (
-            
             <label
               key={index}
               className={idOnStrike === index ? "checked" : ""}
             >
               <input type="radio" name="segmented" />
-              {team.players[id].name}
+              {team.players[String(id)].name}
             </label>
           );
         })}

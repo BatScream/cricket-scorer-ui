@@ -7,6 +7,7 @@ export const gameState = {
     team: "team2",
     player: 3
   },
+  playersOut: [],
   currentBattingTeam: "team1",
   currentBatsmen: {
     team:
@@ -55,42 +56,41 @@ export const gameState = {
             extras: 0
           }
         },
-          3: {
-            name: "Ganguly",
-            battingStats: {
-              runs: 0,
-              balls: 0,
-              fours: 0,
-              sixes: 0,
-              strikeRate: 0
-            },
-            bowlingStats: {
-              overs: 0,
-              maiden: 0,
-              run: 0,
-              wicket: 0,
-              extras: 0
-            }
+        3: {
+          name: "Ganguly",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
           },
-          4: {
-            name: "Virat Kohli",
-            battingStats: {
-              runs: 0,
-              balls: 0,
-              fours: 0,
-              sixes: 0,
-              strikeRate: 0
-            },
-            bowlingStats: {
-              overs: 0,
-              maiden: 0,
-              run: 0,
-              wicket: 0,
-              extras: 0
-            }
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        4: {
+          name: "Virat Kohli",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
           }
         }
-      
+      }
     },
     team2: {
       name: "Team 2",
@@ -160,7 +160,7 @@ export const gameState = {
       fours: 0,
       sixes: 0,
       strikeRate: 0,
-      isOut:false
+      isOut: false
     },
     2: {
       runs: 0,
@@ -168,8 +168,7 @@ export const gameState = {
       fours: 0,
       sixes: 0,
       strikeRate: 0,
-      isOut:false
-
+      isOut: false
     },
     3: {
       runs: 0,
@@ -177,8 +176,7 @@ export const gameState = {
       fours: 0,
       sixes: 0,
       strikeRate: 0,
-      isOut:true
-
+      isOut: true
     },
     4: {
       runs: 0,
@@ -186,8 +184,7 @@ export const gameState = {
       fours: 0,
       sixes: 0,
       strikeRate: 0,
-      isOut:false
-
+      isOut: false
     }
   },
   currentSelectedScore: {},
