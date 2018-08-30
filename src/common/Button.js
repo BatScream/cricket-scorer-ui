@@ -1,7 +1,8 @@
 import React from "react";
 import "./Button.css";
+import { Button } from "reactstrap";
 
-class Button extends React.Component {
+class CustomButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +31,7 @@ class Button extends React.Component {
   }
   render() {
     return (
-      <button
+      <Button
         className={this.getClassForButtonState(this.props.isSelected)}
         id={this.props.element.label}
         onClick={() => {
@@ -38,9 +39,9 @@ class Button extends React.Component {
         }}
       >
         {this.props.element.label}
-      </button>
+      </Button>
     );
   }
 }
 
-export default Button;
+export default CustomButton;

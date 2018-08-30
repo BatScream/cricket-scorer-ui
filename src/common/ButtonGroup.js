@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import CustomButton from "./Button";
 
 class ButtonGroup extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class ButtonGroup extends React.Component {
     return this.props.input.map((element, index) => {
       var isSelected = selectedValue === element.label;
       return (
-        <Button
+        <CustomButton
           key={index}
           element={element}
           isSelected={isSelected}
