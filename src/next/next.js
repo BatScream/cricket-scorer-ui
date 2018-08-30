@@ -16,7 +16,8 @@ class Next extends React.Component {
 
   handleChange(event) {
     console.log("received", event.target.value);
-    this.setState({ newBatsmanId: event.target.value });
+    debugger;
+    this.setState({ newBatsmanId: parseInt(event.target.value) });
   }
 
   toggle() {
@@ -26,7 +27,8 @@ class Next extends React.Component {
   }
 
   handleFallOfWicketAndProceed() {
-    this.props.game.isOut ? this.toggle() : this.props.nextBall();
+    // this.props.game.isOut
+    this.props.isOut ? this.toggle() : this.props.nextBall();
   }
 
   getFirstEligiblePlayer() {
@@ -34,26 +36,30 @@ class Next extends React.Component {
   }
 
   getEligiblePlayers() {
-    const teamPlayerDetails = this.props.game.teams[
-      this.props.game.currentBattingTeam
-    ].players;
-    const playersAvailable = Object.keys(teamPlayerDetails);
-    const ineligibleBatsmen = this.props.game.currentBatsmen.players.concat(
-      this.props.game.playersOut
+    const teamPlayerDetails = this.props.players;
+    // this.props.game.teams[
+    //   this.props.game.currentBattingTeam
+    // ].players;
+
+    const playersAvailableIds = Object.keys(teamPlayerDetails).map(k =>
+      Number(k)
     );
 
-    const result = playersAvailable
-      .filter(
-        p =>
-          !ineligibleBatsmen.includes(Number(p)) &&
-          !ineligibleBatsmen.includes(p)
-      )
-      .map(player => ({ name: teamPlayerDetails[player].name, id: player }));
+    const ineligibleBatsmenIds = this.props.currentBatsmen.players.concat(
+      this.props.playersOut
+    );
 
-    console.log("Players Available: ", playersAvailable);
-    console.log("Players Ineligible: ", ineligibleBatsmen);
-    console.log("Players eligible  ", result);
-    return result;
+    const eligiblePlayerList = playersAvailableIds
+      .filter(playerId => !ineligibleBatsmenIds.includes(playerId))
+      .map(eligiblePlayerId => ({
+        name: teamPlayerDetails[eligiblePlayerId].name,
+        id: eligiblePlayerId
+      }));
+
+    console.log("Players Available: ", playersAvailableIds);
+    console.log("Players Ineligible: ", ineligibleBatsmenIds);
+    console.log("Players eligible  ", eligiblePlayerList);
+    return eligiblePlayerList;
   }
 
   render() {
@@ -72,8 +78,13 @@ class Next extends React.Component {
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
+          onClosed={() => {
+            this.setState({ newBatsmanId: undefined });
+          }}
         >
-          <ModalHeader toggle={this.toggle}>Select Next Batsman</ModalHeader>
+          <ModalHeader toggle={this.toggle}>
+            Select Next Batsman, Please close if non available.
+          </ModalHeader>
           <ModalBody>
             {this.getEligiblePlayers().map((player, index) => (
               <label key={index}>
@@ -81,7 +92,6 @@ class Next extends React.Component {
                   type="radio"
                   name="batsmen"
                   value={player.id}
-                  defaultChecked={index == 0}
                   onClick={event => {
                     this.handleChange(event);
                   }}
@@ -93,12 +103,11 @@ class Next extends React.Component {
           <ModalFooter>
             <Button
               color="primary"
-              disabled={!this.getFirstEligiblePlayer()}
+              disabled={!this.state.newBatsmanId}
               onClick={() => {
                 this.toggle();
                 this.props.nextBall({
-                  nextBatsman:
-                    this.state.newBatsmanId || this.getFirstEligiblePlayer().id
+                  nextBatsman: this.state.newBatsmanId
                 });
               }}
             >
@@ -111,8 +120,25 @@ class Next extends React.Component {
   }
 }
 
+const mappingFunctionForNExt = state => {
+  const currentState = Object.assign({}, state.game);
+  const players = currentState.teams[currentState.currentBattingTeam].players;
+  // this.props.game.currentBatsmen.players.concat(
+  //   this.props.game.playersOut
+  // );
+  const currentBatsmen = currentState.currentBatsmen;
+  const playersOut = currentState.playersOut;
+  debugger;
+  return {
+    isOut: currentState.isOut,
+    players: players,
+    currentBatsmen: currentBatsmen,
+    playersOut: playersOut
+  };
+};
+
 export default connect(
-  state => state,
+  mappingFunctionForNExt,
   dispatch => {
     return {
       nextBall: payload => {
