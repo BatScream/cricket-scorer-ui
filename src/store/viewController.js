@@ -21,12 +21,10 @@ const printCurrentOvers = props => {
   return (
     <label>
       {props.game.currentOver
-        .map(ball => {
-          if (ball.wicket) {
-            return "Out";
-          }
-          return (ball.runs || "") + (ball.extras || "");
-        })
+        .map(
+          ball =>
+            ball.wicket ? "Out" : (ball.runs || "") + (ball.extras || "")
+        )
         .join(" ")}
     </label>
   );

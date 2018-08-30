@@ -1,5 +1,6 @@
 export const gameState = {
   maxOvers: 20,
+  isOut: false,
   currentBallsRun: 0,
   currentBallsWicket: "NWK",
   currentBowler: {
