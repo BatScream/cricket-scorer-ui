@@ -12,7 +12,7 @@ class LiveScore extends React.Component {
     const divStyle = {
       margin: "auto",
       border: "5px solid black",
-      "background-color": "lightyellow",
+      backgroundColor: "lightyellow",
       width: "500px"
     };
 
