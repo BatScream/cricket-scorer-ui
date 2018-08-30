@@ -1,3 +1,4 @@
+import { numberOfLegitimateBalls } from "../helpers/overHelpers";
 export const currentOverReducer = state => {
   const newState = Object.assign({}, state);
 
@@ -6,7 +7,7 @@ export const currentOverReducer = state => {
     extras: state.currentSelectedExtra.label,
     wicket: state.isOut
   });
-  if (newState.currentOver.length > 6) {
+  if (numberOfLegitimateBalls(newState.currentOver) > 6) {
     let arr = [];
     arr.push(newState.currentOver[newState.currentOver.length - 1]);
     newState.currentOver = arr;
