@@ -1,23 +1,22 @@
-.segmented {
-    display:flex;
-    flex-flow:row wrap;
-    box-sizing:border-box;
-    font-family:"Helvetica Neue";
-    font-size:90%;
-    text-align:center;
-}
 
-.segmented a {
-    display:block;
-    flex:1;
-    box-sizing:border-box;
-    border:1px solid #167efb;
-    border-right:none;
-    color:#167efb;
-    margin:0;
-    padding:.4em;
+.button {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
     cursor: pointer;
-    user-select:none;
-    -webkit-user-select:none;
-}
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .button:hover {background-color: #3e8e41}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 
