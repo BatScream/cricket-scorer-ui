@@ -2,7 +2,7 @@ const updateBatsmanStateWithCurrentScore = state => {
   let copiedState = Object.assign({}, state);
   const onStrike = copiedState.currentBatsmen.onStrike;
   const currentBatsmanID = copiedState.currentBatsmen.players[onStrike];
-  const currentRunScored = copiedState.currentSelectedScore.value;
+  const currentRunScored = copiedState.currentSelectedScore.value || 0;
   const currentPlayerBattingStats = copiedState.battingStats[currentBatsmanID];
   let sixes = currentPlayerBattingStats.sixes;
   let fours = currentPlayerBattingStats.fours;
