@@ -1,3 +1,5 @@
+import { isEndOfOver } from "../helpers/overhelpers";
+
 export const batsmanStrikeChangeReducer = state => {
   const batsmanOnStrike = state.currentBatsmen.onStrike;
 
@@ -24,14 +26,3 @@ export const batsmanStrikeChangeReducer = state => {
     currentBatsmen: { ...state.currentBatsmen, onStrike: nextOnStrike }
   };
 };
-
-export const isEndOfOver = currentOver => {
-  const numberOfLegitimateBalls = currentOver.filter(ball =>
-    isLegitimateBall(ball)
-  ).length;
-
-  return numberOfLegitimateBalls === 6;
-};
-
-const isLegitimateBall = ball =>
-  !ball.extras || ball.extras === "B" || ball.extras === "Lb";

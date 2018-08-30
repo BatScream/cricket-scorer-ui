@@ -27,9 +27,9 @@ const nextActionReducer = state => {
   let copiedState = Object.assign({}, state);
   copiedState = currentOverReducer(copiedState);
   copiedState = updateExtraForBowlerReducer(copiedState);
-  copiedState = updateTeamScoreReducer(copiedState);
   copiedState = updateBatsmanStateWithCurrentScore(copiedState);
   copiedState = batsmanStrikeChangeReducer(copiedState);
+  copiedState = updateTeamScoreReducer(copiedState);
   copiedState = resetStateAfterNextAction(copiedState);
   return copiedState;
 };

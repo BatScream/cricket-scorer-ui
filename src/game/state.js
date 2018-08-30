@@ -17,7 +17,7 @@ export const gameState = {
   teams: {
     team1: {
       name: "Team 1",
-      runs: 10,
+      runs: 0,
       wickets: 0,
       oversPlayed: 0,
       players: {
@@ -77,7 +77,7 @@ export const gameState = {
     team2: {
       name: "Team 2",
       runs: 150,
-      wickets: 5,
+      wickets: 7,
       oversPlayed: 20,
       batting: false,
       players: {
