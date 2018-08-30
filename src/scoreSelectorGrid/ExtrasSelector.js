@@ -14,14 +14,31 @@ class ExtranSelectorGrid extends React.Component {
     return (
       <div>
         Extras{" "}
-        <ButtonGroup input={input} handleClick={this.props.handleClick} />
+        <ButtonGroup input={input} selectedValue={this.props.selectedScore} handleClick={this.props.handleClick} />
       </div>
     );
   }
+
+ 
 }
 
+const mapCurrentSelectedExtra = (state) => {
+  function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+  }
+  if(isEmpty(state.currentSelectedScore)){
+    return {selectedScore: -1}
+  }else{
+    return {selectedScore: state.mapCurrentSelectedExtra.value}
+  }
+};
+
 export default connect(
-  null,
+  mapCurrentSelectedExtra,
   dispatch => ({
     handleClick: text => {
       dispatch({

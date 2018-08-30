@@ -13,27 +13,14 @@ const Overs = (props) => {
   return (
     <div className="overDetails">
       <label>This Over :</label> <span className="bowlingDetails">{printCurrentOvers(props)}</span>
-
       <div className="BowlerDetails">
         <span className='bowler'>Bowler :</span>
         <span className="bowlerName"> {printPlayerName(props)}</span>
       </div>
-
-
-      <div>
-        update over details
-            <input type="button" value="Next Ball" onClick={(event) => handleNextBallButtonClick(props)} />
-      </div>
-
     </div>
   )
 }
 
-const handleNextBallButtonClick = (props) => {
- // props.updateOver({ "runs": 6, "extras": 'W', "wicket": 'OUT' });
-  props.updateOver({ "runs":  props.game.currentSelectedScore.value, "extras":  props.game.currentSelectedExtra.label, "wicket": 'NWK' })
-  props.updateExtras()
-};
 
 const printCurrentOvers = (props) => {
   let stringToDisplay = "";
@@ -63,7 +50,6 @@ const printCurrentOvers = (props) => {
 };
 
 const mapStateCurrentOverDisplay = state => {
-  console.log(state);
   return state;
 };
 

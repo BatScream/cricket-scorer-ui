@@ -1,8 +1,7 @@
 import reducer from "./reducer";
-// import {reducer ,initialState } from "./reducer";
-import { gameState } from "./state";
-// import  gameState } from "./state";
+import {gameState} from './state'
 
+const expectedState = Object.assign({},gameState)
 
 test("should return initial start when reducer is called for the first time", () => {
   expect(gameState).toEqual(reducer(undefined, { type: "@@INIT" }));
