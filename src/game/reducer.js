@@ -1,17 +1,15 @@
-import {
-  SET_CURRENT_SCORE,
-  SET_EXTRAS,
-  NEXT_BALL,
-} from "./actions";
+import { SET_CURRENT_SCORE, SET_EXTRAS, NEXT_BALL } from "./actions";
 import { gameState } from "./state";
 import { batsmanStrikeChangeReducer } from "./strikeChangeReducer";
 import { currentOverReducer } from "./currentOverReducer";
 import { currentScoreReducer } from "./currentScoreReducer";
 import { extrasReducer } from "./extrasReducer";
 import { updateTeamScoreReducer } from "./updateTeamScoreReducer";
-import { updateBatsmanStateWithCurrentScore,resetCurrentScore}  from "./currentBatsmanScoreUpdateReducer";
-import {updateExtraForBowlerReducer} from './updateExtraForBowlerReducer';
- 
+import {
+  updateBatsmanStateWithCurrentScore,
+  resetCurrentScoreAndExtras
+} from "./currentBatsmanScoreUpdateReducer";
+import { updateExtraForBowlerReducer } from "./updateExtraForBowlerReducer";
 
 const reducer = (state = gameState, action) => {
   switch (action.type) {
@@ -25,19 +23,19 @@ const reducer = (state = gameState, action) => {
       return state;
   }
 };
-const  nextActionReducer = (state) => {
-  let copiedState = Object.assign({}, state)
+const nextActionReducer = state => {
+  let copiedState = Object.assign({}, state);
   copiedState = currentOverReducer(copiedState);
   copiedState = updateExtraForBowlerReducer(copiedState);
   copiedState = updateTeamScoreReducer(copiedState);
   copiedState = updateBatsmanStateWithCurrentScore(copiedState);
   copiedState = batsmanStrikeChangeReducer(copiedState);
-  copiedState = resetStateAfterNextAction(copiedState)
-  return copiedState
-}
+  copiedState = resetStateAfterNextAction(copiedState);
+  return copiedState;
+};
 
-const resetStateAfterNextAction = (state)=> {
-  return resetCurrentScore(state);  
-}
+const resetStateAfterNextAction = state => {
+  return resetCurrentScoreAndExtras(state);
+};
 
 export default reducer;
