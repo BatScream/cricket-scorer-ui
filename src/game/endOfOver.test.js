@@ -1,5 +1,5 @@
 import each from "jest-each";
-import { isEndOfOver } from "../helpers/overhelpers";
+import { isEndOfOver } from "../helpers/overHelpers";
 
 each([
   [[], false],
