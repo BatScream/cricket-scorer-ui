@@ -25,8 +25,11 @@ const printCurrentOvers = props => {
           ball =>
             ball.wicket
               ? "Out"
-              : (typeof ball.runs === "undefined" || ball.runs) +
-                (ball.extras || "")
+              : (function() {
+                  return !ball.runs && ball.extras
+                    ? ball.extras
+                    : ball.runs + ball.extras;
+                })()
         )
         .join(" ")}
     </label>

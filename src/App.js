@@ -11,6 +11,4 @@ const App = () => (
   </Provider>
 );
 
-//TODO - do we need so many div containers
-
 export default App;
