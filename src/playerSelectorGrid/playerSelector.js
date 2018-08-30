@@ -10,9 +10,12 @@ const PlayerSelector = props => {
 
   return (
     <div className="container">
+    <div className = "currentOver"> This Over :</div>
       <div className="segmented">
+      
         {playerIds.map((id, index) => {
           return (
+            
             <label
               key={index}
               className={idOnStrike === index ? "checked" : ""}
