@@ -5,7 +5,7 @@ export const gameState = {
   currentBallsWicket: "NWK",
   currentBowler: {
     team: "team2",
-    player: 3
+    player: 1
   },
   playersOut: [],
   currentBattingTeam: "team1",
@@ -23,7 +23,7 @@ export const gameState = {
       oversPlayed: 0,
       players: {
         1: {
-          name: "Sachin",
+          name: "K L Rahul",
           battingStats: {
             runs: 0,
             balls: 0,
@@ -40,7 +40,7 @@ export const gameState = {
           }
         },
         2: {
-          name: "Sehwag",
+          name: "Shikhar Dhawan",
           battingStats: {
             runs: 0,
             balls: 0,
@@ -57,7 +57,7 @@ export const gameState = {
           }
         },
         3: {
-          name: "Ganguly",
+          name: "Virat Kohli",
           battingStats: {
             runs: 0,
             balls: 0,
@@ -74,7 +74,126 @@ export const gameState = {
           }
         },
         4: {
-          name: "Virat Kohli",
+          name: "MS Dhoni",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        5: {
+          name: "Dinesh Karthik",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        6: {
+          name: "Ajinkya Rahane",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        7: {
+          name: "Rishabh Pant",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        8: {
+          name: "Ravichandran Ashwin",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        9: {
+          name: "Mohammed Shami",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        10: {
+          name: "Jasprit Bumrah",
+          battingStats: {
+            runs: 0,
+            balls: 0,
+            fours: 0,
+            sixes: 0,
+            strikeRate: 0
+          },
+          bowlingStats: {
+            overs: 0,
+            maiden: 0,
+            run: 0,
+            wicket: 0,
+            extras: 0
+          }
+        },
+        11: {
+          name: "Ishant Sharma",
           battingStats: {
             runs: 0,
             balls: 0,
@@ -117,7 +236,7 @@ export const gameState = {
           }
         },
         2: {
-          name: "Brett Lee",
+          name: "Shane Warne",
           battingStats: {
             runs: 0,
             balls: 0,
@@ -134,7 +253,7 @@ export const gameState = {
           }
         },
         3: {
-          name: "Virat Kohli",
+          name: "Shane Warne",
           battingStats: {
             runs: 0,
             balls: 0,
@@ -179,6 +298,62 @@ export const gameState = {
       isOut: true
     },
     4: {
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0,
+      isOut: false
+    },
+    5: {
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0,
+      isOut: false
+    },
+    6: {
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0,
+      isOut: false
+    },
+    7: {
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0,
+      isOut: false
+    },
+    8: {
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0,
+      isOut: false
+    },
+    9: {
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0,
+      isOut: false
+    },
+    10: {
+      runs: 0,
+      balls: 0,
+      fours: 0,
+      sixes: 0,
+      strikeRate: 0,
+      isOut: false
+    },
+    11: {
       runs: 0,
       balls: 0,
       fours: 0,

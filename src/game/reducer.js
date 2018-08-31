@@ -34,12 +34,12 @@ const reducer = (state = gameState, action) => {
 const nextActionReducer = (state, payload) => {
   let copiedState = Object.assign({}, state);
   copiedState = currentOverReducer(copiedState);
+  copiedState = changeBatsmanIfWicketHasFallen(copiedState, payload);
   copiedState = updateExtraForBowlerReducer(copiedState);
   copiedState = updateBatsmanStateWithCurrentScore(copiedState);
   copiedState = batsmanStrikeChangeReducer(copiedState);
   copiedState = updateTeamScoreReducer(copiedState);
   copiedState = updateTeamOversPlayed(copiedState);
-  copiedState = changeBatsmanIfWicketHasFallen(copiedState, payload);
   copiedState = resetStateAfterNextAction(copiedState);
   return copiedState;
 };

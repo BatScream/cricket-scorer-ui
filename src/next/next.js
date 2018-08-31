@@ -87,20 +87,31 @@ class Next extends React.Component {
           </ModalHeader>
           <ModalBody>
             {this.getEligiblePlayers().map((player, index) => (
-              <label key={index}>
-                <input
-                  type="radio"
-                  name="batsmen"
-                  value={player.id}
-                  onClick={event => {
-                    this.handleChange(event);
-                  }}
-                />
-                {player.name}
-              </label>
+              <div>
+                <label key={index}>
+                  <input
+                    type="radio"
+                    name="batsmen"
+                    value={player.id}
+                    onClick={event => {
+                      this.handleChange(event);
+                    }}
+                  />
+                  {player.name}
+                </label>
+              </div>
             ))}
           </ModalBody>
           <ModalFooter>
+            <Button
+              color="primary"
+              onClick={() => {
+                this.toggle();
+                this.props.nextBall();
+              }}
+            >
+              Finish innings
+            </Button>{" "}
             <Button
               color="primary"
               disabled={!this.state.newBatsmanId}
