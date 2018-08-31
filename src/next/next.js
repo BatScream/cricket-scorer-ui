@@ -85,8 +85,8 @@ class Next extends React.Component {
           <ModalHeader toggle={this.toggle}>Men in the dugout</ModalHeader>
           <ModalBody>
             {this.getEligiblePlayers().map((player, index) => (
-              <div>
-                <label key={index}>
+              <div key={index}>
+                <label>
                   <input
                     type="radio"
                     name="batsmen"
