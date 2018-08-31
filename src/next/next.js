@@ -82,9 +82,7 @@ class Next extends React.Component {
             this.setState({ newBatsmanId: undefined });
           }}
         >
-          <ModalHeader toggle={this.toggle}>
-            Select Next Batsman, Please close if non available.
-          </ModalHeader>
+          <ModalHeader toggle={this.toggle}>Men in the dugout</ModalHeader>
           <ModalBody>
             {this.getEligiblePlayers().map((player, index) => (
               <div>
